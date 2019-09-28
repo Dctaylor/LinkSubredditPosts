@@ -11,7 +11,7 @@ Refer to https://nodejs.org/en/, https://discord.js.org/#/, https://www.npmjs.co
 
 ## Deployment
 
-Create a "auth.json" within the root folder, with the layout:
+Create a "config.json" within the root folder, with the layout:
 ```
 {
   "token": "your_discord_bot_token_here",
