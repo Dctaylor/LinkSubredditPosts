@@ -5,8 +5,8 @@
     "main": "bot.js",
     "author": "David Taylor",
     "dependencies": {
+        "cron": "^1.7.2",
         "discord.js": "^11.5.1",
-        "node-cron": "^2.0.3",
         "snoowrap": "^1.19.0"
     }
 }

@@ -4,7 +4,8 @@ const Discord = require('discord.js');
 //grab config file
 const config = require('./config.json');
 
-const cron = require('node-cron');
+var CronJob = require('cron').CronJob;
+
 
 // create a new Discord client
 const client = new Discord.Client();
@@ -32,9 +33,9 @@ const r = new snoowrap({
 
   
 //Get posts from subreddit and posts it to the correct channel
-cron.schedule('* 19 * * *', () => {
+new CronJob('00 00 19 * * *', function() {
     try {
-        var post = r.getSubreddit('Animemes').getTop({time: 'day'}, {limit: 10}).then(myListing => {
+        r.getSubreddit('Animemes').getTop({time: 'day'}, {limit: 10}).then(myListing => {
             var index = Math.floor((Math.random() * 10) - 1);
             const channel = client.channels.get(config.clientId);
             channel.send(myListing[index].url);
@@ -42,7 +43,8 @@ cron.schedule('* 19 * * *', () => {
     } catch (error) {
         console.log('There has been a problem with your fetch operation: ', error.message);
     }
-});
+}, null, true, 'America/Los_Angeles');
+
 
     
 
