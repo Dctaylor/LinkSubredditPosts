@@ -1,0 +1,12 @@
+{
+    "name": "link-subreddit-posts-bot",
+    "version": "1.0.0",
+    "description": "Posts a random post from the top posts on a given subreddit",
+    "main": "bot.js",
+    "author": "David Taylor",
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "node-cron": "^2.0.3",
+        "snoowrap": "^1.19.0"
+    }
+}

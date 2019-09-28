@@ -2,10 +2,14 @@
 const Discord = require('discord.js');
 
 //grab config file
-const auth = require('./auth.json');
+const config = require('./config.json');
+
+const cron = require('node-cron');
 
 // create a new Discord client
 const client = new Discord.Client();
+
+const snoowrap = require('snoowrap');
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
@@ -14,27 +18,35 @@ client.once('ready', () => {
 });
 
 // login to Discord with your app's token
-client.login(auth.token);
+client.login(config.token);
+
+//setup oAuth for Reddit Api calls
+const r = new snoowrap({
+    userAgent: "A Discord Bot that ocassionally posts content links from given subreddits to Discord (by u/ShadowAssassin96",
+    clientId: config.clientId,
+    clientSecret: config.secret,
+    username: config.username,
+    password: config.password
+  });
 
 
-//listen for message
-client.on('message', message => {
-    //Only react 30% of the time
-    if(Math.floor(Math.random() * 10) < 4) {
-        //Get all custom server emojis
-        const temp = message.guild.emojis.map((e, x) => e.name);
-        const emojiList = [];
-        for(const e of temp.values()) {
-            emojiList.push(e);
-        }
-
-        //Get a randomly selected custom emoji
-        var chosenEmoji = emojiList[Math.floor((Math.random() * 6) - 1)];
-
-        //Find the selected emoji by name
-        const emoji = message.guild.emojis.find(emoji => emoji.name === chosenEmoji);
-
-        //React to the message
-        message.react(emoji);
-    }    
+  
+//Get posts from subreddit and posts it to the correct channel
+cron.schedule('* 19 * * *', () => {
+    try {
+        var post = r.getSubreddit('Animemes').getTop({time: 'day'}, {limit: 10}).then(myListing => {
+            var index = Math.floor((Math.random() * 10) - 1);
+            const channel = client.channels.get(config.clientId);
+            channel.send(myListing[index].url);
+        })
+    } catch (error) {
+        console.log('There has been a problem with your fetch operation: ', error.message);
+    }
 });
+
+    
+
+//post the link
+/*cron.schedule('* 19 * * *', () => {
+    client.channels.get(config.channelId).send('My Message');
+});*/
