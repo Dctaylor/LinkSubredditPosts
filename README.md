@@ -7,7 +7,7 @@ A Discord bot that takes top posts from a given subreddit and randomly selects o
 
 ## Installation
 
-Refer to https://nodejs.org/en/, https://discord.js.org/#/, https://www.npmjs.com/package/node-cron, and https://github.com/not-an-aardvark/snoowrap for dependencies.  For getting your oAuth for accessing Reddit's api, see https://github.com/reddit-archive/reddit/wiki/OAuth2
+Refer to https://nodejs.org/en/, https://discord.js.org/#/, https://www.npmjs.com/package/cron, and https://github.com/not-an-aardvark/snoowrap for dependencies.  For getting your oAuth for accessing Reddit's api, see https://github.com/reddit-archive/reddit/wiki/OAuth2
 
 ## Deployment
 
