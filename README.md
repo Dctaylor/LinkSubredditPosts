@@ -25,6 +25,7 @@ Create a "config.json" within the root folder, with the layout:
   "username": "your_reddit_username",
   "password": "your_reddit_password",
   "channelId": "your_chosen_channel_id_here" //get with \@channelName in discord
+  "subreddit": "your_chosen_subreddit_name_here" //Just its name -> EX: gifs, not r/gifs
 }
 ```
 
