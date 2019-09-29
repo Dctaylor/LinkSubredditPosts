@@ -1,9 +1,10 @@
 # LinkSubredditPostsBot
-A Discord bot that takes top posts from a given subreddit and randomly selects one, after which it posts the content link into discord. It does this once a day at 7pm PST.
+A Discord bot that takes top posts from a given subreddit and randomly selects one, after which it posts the content link into discord, then exits
 
 ## Features
 * Can work with any subreddit provided
-* Has the option to filter out NSFW content
+* Can set your choice of time/frequency for bot to post
+* Works well with a task scheduler so it does not need to be always running
 
 ## Installation
 
