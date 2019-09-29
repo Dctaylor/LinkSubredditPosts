@@ -33,7 +33,7 @@ const r = new snoowrap({
 
   
 //Get posts from subreddit and posts it to the correct channel
-new CronJob('00 43 10 * * *', function() {
+new CronJob('00 00 19 * * *', function() {
     try {
         r.getSubreddit('Animemes').getTop({time: 'day'}, {limit: 10}).then(myListing => {
             var index = Math.floor(Math.random() * 10);
