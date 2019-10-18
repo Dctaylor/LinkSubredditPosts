@@ -3,7 +3,7 @@ A Discord bot that takes top posts from a given subreddit and randomly selects o
 
 ## Features
 * Can work with any subreddit provided
-* Can set your choice of time/frequency for bot to post
+* Can set your choice of time/frequency for bot to post (Set to 9pm PST by Default)
 * Works well with a task scheduler so it does not need to be always running
 
 ## Installation
