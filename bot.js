@@ -19,12 +19,12 @@ client.once('ready', () => {
 });
 
 // login to Discord with your app's token
-client.login(config.token);
+client.login(config.discord_token);
 
 //setup oAuth for Reddit Api calls
 const r = new snoowrap({
     userAgent: "A Discord Bot that ocassionally posts content links from given subreddits to Discord (by u/ShadowAssassin96",
-    clientId: config.clientId,
+    clientId: config.reddit_clientId,
     clientSecret: config.secret,
     username: config.username,
     password: config.password
