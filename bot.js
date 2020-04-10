@@ -41,8 +41,7 @@ const sleep = (milliseconds) => {
             const channel = client.channels.get(config.channelId);
             channel.send(myListing[index].url);
 
-            var erkin = '168264250467287041';
-            channel.send('<@' + erkin + '>');
+            channel.send('<@' + config.erkin + '>');
             //listens for messages sent, if it detects the bot has sent its post, it logs the bot out
             client.on('message', message => {
                 sleep(500).then(() => {
