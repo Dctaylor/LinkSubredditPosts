@@ -6,12 +6,6 @@ const config = require('./config.json');
 
 var CronJob = require('cron').CronJob;
 
-<<<<<<< HEAD
-=======
-var erkin;
-new Discord.GuildMember()
-
->>>>>>> 18d9eeae3661cdc836b52fcf00ec7133fa0215df
 // create a new Discord client
 const client = new Discord.Client();
 const snoowrap = require('snoowrap');
@@ -20,7 +14,6 @@ const snoowrap = require('snoowrap');
 // this event will only trigger one time after logging in
 client.once('ready', () => {
     console.log('Ready!');
-    erkin = client.users.get("168264250467287041");
 });
 
 // login to Discord with your app's token
