@@ -6,6 +6,12 @@ const config = require('./config.json');
 
 var CronJob = require('cron').CronJob;
 
+<<<<<<< HEAD
+=======
+var erkin;
+new Discord.GuildMember()
+
+>>>>>>> 18d9eeae3661cdc836b52fcf00ec7133fa0215df
 // create a new Discord client
 const client = new Discord.Client();
 const snoowrap = require('snoowrap');
