@@ -6,16 +6,15 @@ const config = require('./config.json');
 
 var CronJob = require('cron').CronJob;
 
-
 // create a new Discord client
 const client = new Discord.Client();
-
 const snoowrap = require('snoowrap');
 
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
 client.once('ready', () => {
-	console.log('Ready!');
+    console.log('Ready!');
+    erkin = client.users.get("168264250467287041");
 });
 
 // login to Discord with your app's token
@@ -31,29 +30,36 @@ const r = new snoowrap({
   });
 
 
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
   
 //Get posts from subreddit and posts it to the correct channel
-new CronJob('00 00 21 * * *', function() {
+//new CronJob('00 00 21 * * *', function() {
     try {
-        r.getSubreddit(config.subreddit).getTop({time: 'day'}, {limit: 10}).then(myListing => {
+        r.getSubreddit(config.subreddit).getTop({time: 'day', over_18: false}, {limit: 10}).then(myListing => {
             var index = Math.floor(Math.random() * 10);
             const channel = client.channels.get(config.channelId);
             channel.send(myListing[index].url);
 
+            var erkin = '168264250467287041';
+            channel.send('<@' + erkin + '>');
             //listens for messages sent, if it detects the bot has sent its post, it logs the bot out
             client.on('message', message => {
-                //checks if the message is in the correct channel
-                if(message.channel == channel)
+                sleep(500).then(() => {
+                    //checks if the message is in the correct channel
+                    if(message.channel == channel)
                     //checks if the author of the message is our bot
                     if(message.author.id === client.user.id)
                         //logs the bot out of discord
                         client.destroy();
+                })
             })
         })
     } catch (error) {
         console.log('There has been a problem with your fetch operation: ', error.message);
     }
-}, null, true, 'America/Los_Angeles');
+//}, null, true, 'America/Los_Angeles');
 
 //Lets us know the bot has disconnected and kills the process
 client.on("disconnect", function(event){
