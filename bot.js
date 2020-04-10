@@ -6,6 +6,8 @@ const config = require('./config.json');
 
 var CronJob = require('cron').CronJob;
 
+var erkin;
+new Discord.GuildMember()
 
 // create a new Discord client
 const client = new Discord.Client();
@@ -15,7 +17,8 @@ const snoowrap = require('snoowrap');
 // when the client is ready, run this code
 // this event will only trigger one time after logging in
 client.once('ready', () => {
-	console.log('Ready!');
+    console.log('Ready!');
+    erkin = client.users.get("168264250467287041");
 });
 
 // login to Discord with your app's token
@@ -39,6 +42,13 @@ new CronJob('00 00 21 * * *', function() {
             var index = Math.floor(Math.random() * 10);
             const channel = client.channels.get(config.channelId);
             channel.send(myListing[index].url);
+            message.channel.send(`Tagging ${erkin}~!`);
+           
+            var erkin = channel.client.guild.members.get('168264250467287041');
+    console.log(erkin.member.id);
+        //(168264250467287041);
+        message.channel.send(`Tagging ${erkin.username.name}`);
+
 
             //listens for messages sent, if it detects the bot has sent its post, it logs the bot out
             client.on('message', message => {
